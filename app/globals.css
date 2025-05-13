@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 214 90% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 214 90% 40%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 214 90% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 214 90% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for medical content */
+.medical-table th {
+  @apply bg-primary-50 text-primary-900 dark:bg-primary-950 dark:text-primary-100 text-xs uppercase tracking-wider font-semibold px-3 py-2;
+}
+
+.medical-table td {
+  @apply px-3 py-2 border-t border-gray-200 dark:border-gray-700;
+}
+
+.medical-table tr:hover td {
+  @apply bg-gray-50 dark:bg-gray-800/50;
+}
+
+.high-yield-item {
+  @apply border-l-4 border-accent-500 pl-3 py-2 mb-2 bg-accent-50 dark:bg-accent-950/20 rounded-r-md;
+}
+
+.buzzword {
+  @apply font-semibold text-primary-700 dark:text-primary-300 underline decoration-dotted underline-offset-2;
+}
+
+.key-concept {
+  @apply bg-primary-50 dark:bg-primary-900/30 p-3 rounded-md border border-primary-100 dark:border-primary-800;
+}
+
+.differential-item {
+  @apply flex items-start gap-2 mb-2;
+}
+
+.differential-marker {
+  @apply text-accent-600 dark:text-accent-400 font-bold;
+}
+
+.tag-badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+.tag-hy {
+  @apply bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300;
+}
+
+.tag-patho {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+}
+
+.tag-physio {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.tag-labs {
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300;
+}
+
+.tag-img {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+}
+
+.tag-hdt {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300;
+}
+
+.tag-diff {
+  @apply bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300;
+}
+
+/* Smart, responsive, and blue-shaded table styles for Markdown output */
+.prose .table-responsive, .prose-invert .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose table, .prose-invert table {
+  width: 100%;
+  min-width: 600px;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 1.5px solid #2563eb;
+  margin-bottom: 1.5em;
+}
+
+.prose th, .prose-invert th {
+  background: #1e3a8a; /* Dark blue */
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-bottom: 2px solid #2563eb;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+
+.prose td, .prose-invert td {
+  padding: 9px 14px;
+  border-bottom: 1.5px solid #93c5fd;
+  background: #f0f6ff;
+  color: #1e293b;
+}
+
+.prose tr:last-child td, .prose-invert tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tr:nth-child(even) td, .prose-invert tr:nth-child(even) td {
+  background: #dbeafe;
+}
+
+@media (max-width: 600px) {
+  .prose table, .prose-invert table {
+    font-size: 0.85rem;
+    min-width: 400px;
+  }
+  .prose th, .prose td, .prose-invert th, .prose-invert td {
+    padding: 7px 8px;
+  }
+}
