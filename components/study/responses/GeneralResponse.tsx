@@ -49,10 +49,6 @@ function miniMarkdownToHtml(text: string): string {
         <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
         <span class="custom-tooltip">Copy Table</span>
       </button>
-      <button class="icon-btn" data-action="download" tabindex="0">
-        <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 5v14m0 0l-5-5m5 5l5-5"/><rect x="5" y="19" width="14" height="2" rx="1"/></svg>
-        <span class="custom-tooltip">Download as PNG</span>
-      </button>
     </div>`;
   });
   return html;
@@ -83,22 +79,6 @@ export default function GeneralResponse({ responseData }: GeneralResponseProps) 
         text += cells.join('\t') + '\n';
       }
       navigator.clipboard.writeText(text);
-    } else if (action === 'download') {
-      // Download table as PNG using html-to-image (dynamically import to avoid type error)
-      try {
-        const htmlToImage = await import('html-to-image');
-        const dataUrl = await htmlToImage.toPng(tableDiv, { backgroundColor: '#fff' });
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = 'table.png';
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => {
-          document.body.removeChild(a);
-        }, 100);
-      } catch (err) {
-        alert('Failed to generate image.');
-      }
     }
   };
 
